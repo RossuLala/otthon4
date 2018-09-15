@@ -16,3 +16,13 @@ git commit -m "első verzió"        // egy változat feltöltése
 git remote add origin https://github.com/RossuLala/xxx // ide kell tölteni
 git remote -- verbose              //leellenőrzés
 git push -u origin master          // feltöltés
+
+
+Új Angular projekt létrehozása:
+-------------------------------
+ng new otthon4
+
+npm i bootstrap -g  --- Bootstrap installálása (–g központi)
+npm i jquery -g  --- jQery installálása
+src/angular.json --- fájlban beállítani a Bootsrap és JQery elérést
+Crtl+C szerver leállítás
