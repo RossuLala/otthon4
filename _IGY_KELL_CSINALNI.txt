@@ -34,3 +34,7 @@ app.component.html - be másolni a forrás body részét
 
 Csontváz css és js fáljainak bemásoláda az angularba.
 
+
+Komponensek létrehozása (csontváz szétdarabolása)
+-------------------------------------------------
+ng g component my-new-component 
