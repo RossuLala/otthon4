@@ -1,0 +1,18 @@
+-----------------------------
+ANGULAR PROJEKT LÉPÉSENKÉNT:
+----------------------------
+
+GIT beállítása:
+---------------
+
+Repo létrehozása a GitHub-on:
+https://github.com/RossuLala
+
+
+git init
+git add -- all                     // figyeld ezeket a fájlokat
+git status                         // státusz lekérdezése
+git commit -m "első verzió"        // egy változat feltöltése
+git remote add origin https://github.com/RossuLala/xxx // ide kell tölteni
+git remote -- verbose              //leellenőrzés
+git push -u origin master          // feltöltés
