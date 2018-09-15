@@ -29,8 +29,8 @@ Crtl+C szerver leállítás
 
 Csontváz letöltése:
 -------------------
-
 https://getbootstrap.com/docs/3.3/getting-started/
 app.component.html - be másolni a forrás body részét
 
+Csontváz css és js fáljainak bemásoláda az angularba.
 

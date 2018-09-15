@@ -1,0 +1,105 @@
+/ *
+ * Alapszerkezet
+ * /
+
+/ * Mozgassa le a tartalmat, mert van egy rögzített navbar, ami 50px magas * /
+test {
+  padding-top: 50px;
+}
+
+
+/ *
+ * Globális kiegészítők
+ * /
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px szilárd #eee;
+}
+
+/ *
+ * Top navigáció
+ * Elrejteni az alapértelmezett szegélyt az 1px vonal eltávolításához.
+ * /
+.navbar-fix-top {
+  határ: 0;
+}
+
+/ *
+ * Oldalsáv
+ * /
+
+/ * Elrejtés mobilra, később megjelenítés * /
+.oldalsáv {
+  kijelző: nincs;
+}
+@media (min-szélesség: 768px) {
+  .oldalsáv {
+    pozíció: fix;
+    top: 51px;
+    alsó: 0;
+    balra: 0;
+    z-index: 1000;
+    kijelző: blokk;
+    párnázottság: 20px;
+    túlcsordulás-x: rejtett;
+    túlcsordulás-y: auto; / * Vezérelhető tartalom, ha a nézetablak rövidebb a tartalomnál. * /
+    háttérszín: # f5f5f5;
+    határ-jobb: 1px szilárd #eee;
+  }
+}
+
+/ * Oldalsáv navigáció * /
+.nav-oldalsáv {
+  margin-right: -21px; / * 20px padding + 1px border * /
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-oldalsáv> li> a {
+  párna-jobb: 20px;
+  párna-balra: 20px;
+}
+.nav-sidebar> .aktív> a,
+.nav-oldalsáv>. aktív> a: lebeg,
+.nav-oldalsáv>. aktív> a: fókusz {
+  szín: #fff;
+  háttérszín: # 428bca;
+}
+
+
+/ *
+ * Központi téma
+ * /
+
+.main {
+  párnázottság: 20px;
+}
+@media (min-szélesség: 768px) {
+  .main {
+    padding-jobb: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/ *
+ * Helyőrző műszerfal ötletek
+ * /
+
+.lakók {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.helyőrzők h4 {
+  margin-bottom: 0;
+}
+.helykitöltő {
+  margin-bottom: 20px;
+}
+.helyholder img {
+  kijelző: inline-block;
+  határ-sugár: 50%;
+}
