@@ -38,3 +38,23 @@ Csontváz css és js fáljainak bemásoláda az angularba.
 Komponensek létrehozása (csontváz szétdarabolása)
 -------------------------------------------------
 ng g component my-new-component 
+
+
+LISTÁK MEGJELENÍTÉSE:
+--------------------
+
+ <tbody>
+        <tr *ngFor= "let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.firsName }}</td>
+          <td>{{ user.email}}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.relatives }}</td>
+        </tr>
+  </tbody>
+
+Az "*n" megváltoztatja a HTML-t.
+A "*ngFor" végigmegy a "users" tömb összes elemén és az "user" elemeket betölti.
+
+
