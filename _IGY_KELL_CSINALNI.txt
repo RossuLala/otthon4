@@ -40,9 +40,8 @@ Komponensek létrehozása (csontváz szétdarabolása)
 ng g component my-new-component 
 
 
-LISTÁK MEGJELENÍTÉSE:
+*ngFor - LISTÁK MEGJELENÍTÉSE:
 --------------------
-
  <tbody>
         <tr *ngFor= "let user of users">
           <td>{{ user.id }}</td>
@@ -58,3 +57,25 @@ Az "*n" megváltoztatja a HTML-t.
 A "*ngFor" végigmegy a "users" tömb összes elemén és az "user" elemeket betölti.
 
 
+OnInit 
+--------------------------------
+//implementáltuk az OnInit interfészt:
+
+export class ContentComponent implements OnInit { 
+
+  users = [];
+
+  constructor() {}
+
+  ngOnInit() {                                     //Az ngOnInit-hez kell 
+    let user1 = new User (1,'aaa1', 'bbb1','ccc1','ddd1')
+    let user2 = new User (2,'aaa2', 'bbb2','ccc2','ddd2')
+    let user3 = new User (3,'aaa3', 'bbb3','ccc3','ddd3')
+    this.users.push (user1);
+    this.users.push (user2);
+    this.users.push (user3);
+  }
+}
+
+KIEGÉSTÍTŐ TELEPÍTÉSE: TypeScript Importer
+------------------------------------------
