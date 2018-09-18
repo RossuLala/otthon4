@@ -64,6 +64,7 @@ OnInit
 export class ContentComponent implements OnInit { 
 
   users = [];
+  
 
   constructor() {}
 
@@ -79,3 +80,9 @@ export class ContentComponent implements OnInit {
 
 KIEGÉSTÍTŐ TELEPÍTÉSE: TypeScript Importer
 ------------------------------------------
+Kiírja, ha egy objektum hiányol valamit.
+
+
+
+
+

@@ -42,9 +42,9 @@
           <th>Kapcsolattartó</th>
         </tr>
       </thead>
-      
+
       <tbody>
-        <tr *ngFor= "let user of users">
+        <tr *ngFor="let user of getActiveUsers()">
           <td>{{ user.id }}</td>
           <td>{{ user.lastName }}</td>
           <td>{{ user.firstName }}</td>
@@ -52,7 +52,6 @@
           <td>{{ user.phone }}</td>
           <td>{{ user.relatives }}</td>
         </tr>
-        
       </tbody>
     </table>
   </div>

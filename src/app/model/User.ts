@@ -6,7 +6,8 @@ export class User {  //Az osztály létrehozásával a tervrajz más modulokban 
     firstName: string;
     email: string;
     phone: string;
-    relatives?: string  //?- nem kötelező kitölteni
+    relatives?: string;  //?- nem kötelező kitölteni
+    active?: boolean;
 
     public constructor (    
         id: number,
@@ -14,7 +15,8 @@ export class User {  //Az osztály létrehozásával a tervrajz más modulokban 
         firstName: string,
         email: string,
         phone: string,
-        relatives: string = 'none'
+        relatives: string = 'none',
+        active: boolean = false
         )
     {
         this.id = id;
@@ -23,5 +25,7 @@ export class User {  //Az osztály létrehozásával a tervrajz más modulokban 
         this.email = email;
         this.phone = phone;
         this.relatives = relatives;
+        this.active = active
     }
 }
+
