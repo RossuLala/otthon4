@@ -7,7 +7,8 @@ import { User } from '../model/User';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  @Input('pageChange') PageChange: EventEmitter<string>;
+  @Input('pageChange') PageChange: EventEmitter<any>;//any - Típus ellenőrzés kikapcsolása. Több dolog is átadható
+  private currentLink: string = "/";
 
   users = [];
 
@@ -24,6 +25,8 @@ export class ContentComponent implements OnInit {
     this.PageChange.subscribe(
       (url) => {
         console.log('content.component---', url);
+        this.currentLink = url;
+
       }
     )
   }
