@@ -3,9 +3,9 @@
 <div class="container-fluid">
   <div class="row">
 
-    <app-left-sidebar></app-left-sidebar>
+    <app-left-sidebar (change)="onPageChange($event)"></app-left-sidebar>
 
-    <app-content></app-content>
+    <app-content [pageChange]="pageChange"></app-content>
 
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { User } from '../model/User';
 
 @Component({
@@ -7,6 +7,7 @@ import { User } from '../model/User';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
+  @Input('pageChange') PageChange: EventEmitter<string>;
 
   users = [];
 
@@ -19,6 +20,12 @@ export class ContentComponent implements OnInit {
     this.users.push(user1);
     this.users.push(user2);
     this.users.push(user3);
+
+    this.PageChange.subscribe(
+      (url) => {
+        console.log('content.component---', url);
+      }
+    )
   }
 
   getActiveUsers() {
