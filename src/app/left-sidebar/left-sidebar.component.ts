@@ -23,7 +23,7 @@ export class LeftSidebarComponent implements OnInit {
 
     this.pageChange.emit(this.currentLink); //emit az esemény kiváltásáért felel
 
-    console.log('left-sidebar.component---',this.currentLink);
+    //console.log('left-sidebar.component---',this.currentLink);
   }
 
 }

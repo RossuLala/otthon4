@@ -2,10 +2,10 @@
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
         <li [ngClass]="{'active' : currentLink == '/'}">
-          <a (click)="onMenuClick($event)" href="/">Overview</a>
+          <a (click)="onMenuClick($event)" href="/">Összefoglaló</a>
         </li>
-        <li [ngClass]="{'active' : currentLink == '/reports'}">
-          <a (click)="onMenuClick($event)" href="/reports">Reports</a>
+        <li [ngClass]="{'active' : currentLink == '/user-manager'}">
+          <a (click)="onMenuClick($event)" href="/user-manager">Lakó kezelés</a>
         </li>
         <li [ngClass]="{'active' : currentLink == '/analytics'}">
           <a (click)="onMenuClick($event)" href="/analytics">Analytics</a>

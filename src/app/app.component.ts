@@ -17,7 +17,7 @@ export class AppComponent {
   }
 
   onPageChange(pageUrl: string){
-    console.log('app.component---', pageUrl)
+    //console.log('app.component---', pageUrl)
     this.pageChange.emit(pageUrl);
   }
 }

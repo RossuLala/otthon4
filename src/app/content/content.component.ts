@@ -24,7 +24,7 @@ export class ContentComponent implements OnInit {
 
     this.PageChange.subscribe(
       (url) => {
-        console.log('content.component---', url);
+        //console.log('content.component---', url);
         this.currentLink = url;
 
       }
