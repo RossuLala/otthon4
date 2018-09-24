@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { User } from '../model/User';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-content',
@@ -12,15 +13,11 @@ export class ContentComponent implements OnInit {
 
   users = [];
 
-  constructor() { }
+  constructor(private userService: UserService) { // contructor adja, hogy a UserService szervízt userService néven fogjuk elérni
+    console.log('construkted');
+  }
 
   ngOnInit() {
-    let user1 = new User(1, 'aaa1', 'bbb1', 'ccc1', 'ddd1', 'eee1', true)
-    let user2 = new User(2, 'aaa2', 'bbb2', 'ccc2', 'ddd2', 'eee2', false)
-    let user3 = new User(3, 'Rossu', 'László', 'lala@intralog.hu', '30-99-67-670', 'Wintou', true)
-    this.users.push(user1);
-    this.users.push(user2);
-    this.users.push(user3);
 
     this.PageChange.subscribe(
       (url) => {
@@ -28,7 +25,12 @@ export class ContentComponent implements OnInit {
         this.currentLink = url;
 
       }
-    )
+    );
+
+    this.users = this.userService.getAll();
+
+    let user1 = this.userService.getOne(2);
+
   }
 
   getActiveUsers() {

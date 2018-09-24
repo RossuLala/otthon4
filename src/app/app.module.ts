@@ -7,6 +7,7 @@ import { TopHeaderComponent } from './top-header/top-header.component';
 import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { UserManagerComponent } from './content/user-manager/user-manager.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { UserManagerComponent } from './content/user-manager/user-manager.compon
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService],// provire - elérhetővé tesszük minenhonnan (beteszi az importok közé)
   bootstrap: [AppComponent]
 })
 export class AppModule { }

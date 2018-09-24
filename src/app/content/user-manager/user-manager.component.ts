@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../model/User';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-user-manager',
@@ -9,7 +10,7 @@ import { User } from '../../model/User';
 export class UserManagerComponent implements OnInit {
   @Output() newUser: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     
@@ -22,7 +23,7 @@ export class UserManagerComponent implements OnInit {
     }
     let values = form.value;
     let user = new User(1, values.lastName, values.firstName, values.email, values.phone, values.relatives, true);
-    this.newUser.emit(user);
+    this.userService.pushOne(user);
 
   }
 
