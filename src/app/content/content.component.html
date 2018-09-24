@@ -65,7 +65,7 @@
 
   <!--Reports -->
   <div *ngIf="currentLink == '/user-manager'">
-    <app-user-manager></app-user-manager>
+    <app-user-manager (newUser)=" onNewUser($event)" ></app-user-manager> <!-- Figyeljük a newUser eseményt -->
   </div>
 
   <!--Reports -->

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-user-manager',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-manager.component.css']
 })
 export class UserManagerComponent implements OnInit {
+  @Output() newUser: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -13,12 +15,19 @@ export class UserManagerComponent implements OnInit {
     
   }
 
-  submitForm(values){
-    console.log ('submitForm:',values);
+  submitForm(form){
+    console.log ('submitForm:',form);
+    if (!form.valid){
+      return false;
+    }
+    let values = form.value;
+    let user = new User(1, values.lastName, values.firstName, values.email, values.phone, values.relatives, true);
+    this.newUser.emit(user);
+
   }
 
   checkError(form, control){
-    console.log ('checkError:', form);
+    //console.log ('checkError:', form);
 
     if (!control){
       return false;
