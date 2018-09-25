@@ -1,88 +1,96 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-  <div *ngIf="currentLink == '/'">
+    <div *ngIf="currentLink == '/'">
 
 
-    <h1 class="page-header">Dashboard</h1>
+        <h1 class="page-header">Dashboard</h1>
 
-    <div class="row placeholders">
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-          height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">{{currentLink}}</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-          height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-          height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
-      <div class="col-xs-6 col-sm-3 placeholder">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-          height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-        <h4>Label</h4>
-        <span class="text-muted">Something else</span>
-      </div>
+        <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
+                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h4>Label</h4>
+                <span class="text-muted">{{currentLink}}</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
+                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h4>Label</h4>
+                <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
+                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h4>Label</h4>
+                <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
+                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+                <h4>Label</h4>
+                <span class="text-muted">Something else</span>
+            </div>
+        </div>
+
+
+
+        <h2 class="sub-header">Section title</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Vezetéknév</th>
+                        <th>Keresztnév</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Kapcsolattartó</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.email}}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.relatives }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button (click)="onChangeActive(user)" class=" btn btn-xs" [ngClass]="{'btn-info':user.active, 'btn-warning':!user.active}">
+                                    <span *ngIf="user.active" > active </span>
+                                    <span *ngIf="!user.active">inactive</span>
+                                </button>
+                                <button (click)="onChangeActive(user)" class=" btn btn-xs btn-primary" >
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                                <button (click)="onChangeActive(user)" class=" btn btn-xs btn-danger" >
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
-
-
-    <h2 class="sub-header">Section title</h2>
-    <div class="table-responsive">
-      <table class="table table-striped">
-
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Vezetéknév</th>
-            <th>Keresztnév</th>
-            <th>Email</th>
-            <th>Telefon</th>
-            <th>Kapcsolattartó</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.email}}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.relatives }}</td>
-            <td>
-              <button (click)="onChangeActive(user)" class=" btn btn-xs" [ngClass]="{'btn-info':user.active, 'btn-warning':!user.active}">
-                <span *ngIf="user.active">active</span>
-                <span *ngIf="!user.active">inactive</span>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!--Reports -->
+    <div *ngIf="currentLink == '/user-manager'">
+        <app-user-manager (newUser)=" onNewUser($event)"></app-user-manager> <!-- Figyeljük a newUser eseményt -->
     </div>
 
-  </div>
+    <!--Reports -->
+    <div *ngIf="currentLink == '/analytics'">
+        Analytics div.
+    </div>
 
-  <!--Reports -->
-  <div *ngIf="currentLink == '/user-manager'">
-    <app-user-manager (newUser)=" onNewUser($event)"></app-user-manager> <!-- Figyeljük a newUser eseményt -->
-  </div>
-
-  <!--Reports -->
-  <div *ngIf="currentLink == '/analytics'">
-    Analytics div.
-  </div>
-
-  <!--Reports -->
-  <div *ngIf="currentLink == '/export'">
-    Export div.
-  </div>
+    <!--Reports -->
+    <div *ngIf="currentLink == '/export'">
+        Export div.
+    </div>
 
 
 </div>
