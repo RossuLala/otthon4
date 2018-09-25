@@ -49,13 +49,16 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let user of getActiveUsers()">
+          <tr *ngFor="let user of users">
             <td>{{ user.id }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.email}}</td>
             <td>{{ user.phone }}</td>
             <td>{{ user.relatives }}</td>
+            <td>
+              <button (click)="onChangeActive(user)" class=" btn btn-info btn-xs"> active</button>
+            </td>
           </tr>
         </tbody>
       </table>

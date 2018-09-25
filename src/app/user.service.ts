@@ -22,12 +22,11 @@ export class UserService {
     }
 
     getOne(id: Number){                 //visszadja az adot id-jű usert
-        for (let user of this.users){
-            if (user.id == id){
-                return user;
-            }
+        let index = this.getUserIndex(id)
+        if (index == null){
+            return index;
         }
-        return null;
+        return this.users[index];
     }
 
     getTopID(){
@@ -45,6 +44,23 @@ export class UserService {
         user.id = this.getTopID() + 1;
         this.users.push(user);
         //console.log(this.users);
+    }
+
+    changeStatus(user: User){
+        let index = this.getUserIndex(user.id);
+        if (index!== null){
+            this.users[index].active = !this.users[index].active //legyen az ellenkezője
+        }
+    }
+
+    getUserIndex(id: Number){    // kikeresi, hogy a tömb hányadik eleme az adott id
+        let index = null;
+        for (let i=0; i<this.users.length; i++){
+            if (this.users[i].id == id){
+                index = i;
+            }
+        }
+        return index;
     }
 
 }

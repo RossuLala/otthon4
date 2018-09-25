@@ -28,25 +28,12 @@ export class ContentComponent implements OnInit {
     );
 
     this.users = this.userService.getAll();
-
-    let user1 = this.userService.getOne(2);
-
+    //let user1 = this.userService.getOne(1);
+    console.log('this.userService.getOne(2)', this.userService.getOne(2));
   }
 
-  getActiveUsers() {
-    let actives = [];
-    for (let user of this.users) {//TS szekezet: Nem a kulcsokon, hanem az értékekemn megy végig i egy user
-      if (user.active){
-        actives.push(user);
-      }
-    }
-    return actives
+  onChangeActive(user: User){
+    this.userService.changeStatus(user);
+    console.log('this.users', this.users);
   }
-
-  onNewUser(user: User){ //A modelben megadott szekezetre hivatkozok
-    let lastID = this.users[this.users.length-1].id
-    user.id = lastID + 1;
-    this.users.push(user);
-  }
-
 }
