@@ -7,6 +7,7 @@ import { User } from './model/User';
 export class UserService {
 
     users: Array<User> = [];
+    lastEditedUser: User = null;
 
     constructor() {
         let user1 = new User(1, 'aaa1', 'bbb1', 'ccc1', 'ddd1', 'eee1', true)
@@ -63,4 +64,12 @@ export class UserService {
         return index;
     }
 
+    editUser(user: User){                       //megkapjuk a módosított user értékeket
+        let index = this.getUserIndex(user.id); //megkeressük a tömbben a sort ID alapján
+        if (index!== null){
+            for (let k in user){                //vég megyünk a user minden elemén
+                this.users[index][k] = user [k] //beírjuk az új értékeket
+            }
+        }
+    }
 }

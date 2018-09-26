@@ -8,6 +8,9 @@ import { LeftSidebarComponent } from './left-sidebar/left-sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { UserManagerComponent } from './content/user-manager/user-manager.component';
 import { UserService } from './user.service';
+import { UserEditorComponent } from './content/user-manager/user-editor/user-editor.component';
+import { UrlService } from './url.service';
+
 
 @NgModule({
   declarations: [
@@ -15,13 +18,17 @@ import { UserService } from './user.service';
     TopHeaderComponent,
     LeftSidebarComponent,
     ContentComponent,
-    UserManagerComponent
+    UserManagerComponent,
+    UserEditorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [UserService],// provire - elérhetővé tesszük minenhonnan (beteszi az importok közé)
+  providers: [ // provire - elérhetővé tesszük minenhonnan (beteszi az importok közé)
+    UserService, 
+    UrlService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

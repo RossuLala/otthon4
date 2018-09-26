@@ -83,12 +83,12 @@ KIEGÉSTÍTŐ TELEPÍTÉSE: TypeScript Importer
 ------------------------------------------
 Kiírja, ha egy objektum hiányol valamit.
 
+
 SZERVÍZ LÉTREHOZÁSA
 -------------------
 ng g service user
 
-
 SERVICE - elérhetővé tétele mindenhonnan
 ----------------------------------------
-app.module.ts   - providerben kell beállítnai
+app.module.ts   - providerben kell beállítnai hogy mindenhonna elérhető legyen
 

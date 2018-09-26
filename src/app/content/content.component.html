@@ -62,10 +62,10 @@
                                     <span *ngIf="user.active" > active </span>
                                     <span *ngIf="!user.active">inactive</span>
                                 </button>
-                                <button (click)="onChangeActive(user)" class=" btn btn-xs btn-primary" >
+                                <button (click)="onEditUser(user)" class=" btn btn-xs btn-primary" >
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </button>
-                                <button (click)="onChangeActive(user)" class=" btn btn-xs btn-danger" >
+                                <button class=" btn btn-xs btn-danger" >
                                     <span class="glyphicon glyphicon-remove"></span>
                                 </button>
                             </div>

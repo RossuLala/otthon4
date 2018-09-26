@@ -36,4 +36,9 @@ export class ContentComponent implements OnInit {
     this.userService.changeStatus(user);
     console.log('this.users', this.users);
   }
+
+  onEditUser(user: User){
+    this.userService.lastEditedUser = user;
+    console.log('this.userService.lastEditedUser', this.userService.lastEditedUser);
+    
 }
