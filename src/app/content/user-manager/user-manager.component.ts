@@ -9,7 +9,6 @@ import { UrlService } from '../../url.service';
   styleUrls: ['./user-manager.component.css']
 })
 export class UserManagerComponent implements OnInit, OnDestroy {
-  @Output() newUser: EventEmitter<any> = new EventEmitter();
   @Output() isEdit: boolean = false;
   @Output() lastUser: User = null;
 

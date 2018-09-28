@@ -1,2 +1,12 @@
-<app-new-user *ngIf="!isEdit"></app-new-user>
-<app-user-editor *ngIf="isEdit" [user]= "lastUser" ></app-user-editor>
+<div class="row" *ngIf="!isEdit">
+    <div class="h3">Új lakó hozzáadása a rendszerhez</div>
+    <app-new-user></app-new-user>
+</div>
+
+<div class="row" *ngIf="isEdit">
+    <div class="h3">Lakó adatok szerkesztése</div>
+    <app-user-editor [user]="lastUser" ></app-user-editor>
+</div>
+
+
+
