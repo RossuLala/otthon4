@@ -92,3 +92,22 @@ SERVICE - elérhetővé tétele mindenhonnan
 ----------------------------------------
 app.module.ts   - providerben kell beállítnai hogy mindenhonna elérhető legyen
 
+
+ADAT KAPCSOLÁS:
+---------------
+.ts
+ngOnInit()--
+import { UserService } from '../user.service';
+-- Importáluk a szervízt ami az adatokat adja át
+
+this.urlChanged.emit({ url: this.currentUrl, data})
+-- átadjuk az adatokat az esemnykezelőnek
+
+ngOnInit() {                           
+  this.urlService.urlChanged.subscribe(        //figyelünk és feliratkozunk az eseményre
+    (e) => { this.currentLink = e.url;}
+  );
+  this.currentLink = this.urlService.currentUrl;
+  this.users = this.userService.getAll();
+}
+-- Figyeljük az eseményt

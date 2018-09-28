@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { User } from './model/User';
 
 @Injectable({
@@ -41,6 +41,10 @@ export class UserService {
         return topID;
     }
 
+    getlastEditedUser(){
+        return this.lastEditedUser
+    }
+
     pushOne(user: User){
         user.id = this.getTopID() + 1;
         this.users.push(user);
@@ -71,5 +75,10 @@ export class UserService {
                 this.users[index][k] = user [k] //beírjuk az új értékeket
             }
         }
+    }
+
+    deleteUser( user: User ){
+        let index = this.getUserIndex(user.id);
+        this.users.splice(index,1); //a tömb valahanyadik elemétől töröl valahány elemet
     }
 }

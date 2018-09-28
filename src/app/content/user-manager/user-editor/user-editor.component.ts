@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { User } from '../../../model/User';
 import { UserService } from '../../../user.service';
 
@@ -8,22 +8,17 @@ import { UserService } from '../../../user.service';
   styleUrls: ['./user-editor.component.css']
 })
 export class UserEditorComponent implements OnInit {
-
+  @Input() user : User;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
   submitForm(form){
-    console.log ('submitForm:',form);
-    if (!form.valid){
-      return false;
-    }
-    let values = form.value;
-    let user = new User(1, values.lastName, values.firstName, values.email, values.phone, values.relatives, true);
-    this.userService.editUser(user); // editUser-t hívjuk meg
-
+    console.log('user', this.user);
+    this.userService.editUser(this.user);
   }
+  
 
   checkError(form, control){
     //console.log ('checkError:', form);
