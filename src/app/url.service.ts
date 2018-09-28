@@ -4,7 +4,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
   providedIn: 'root'
 })
 export class UrlService {
-  @Output() urlChanged: EventEmitter<{ url: string, data: Object }> = new EventEmitter(); //eseménykezelő indítása megadjuk, hogy mit adunk át
+  @Output() urlChanged: EventEmitter<{ url: string, data: Object }> = new EventEmitter(); 
+  //eseménykezelő indítása megadjuk, hogy mit adunk át
 
   currentUrl: string = "/";
 

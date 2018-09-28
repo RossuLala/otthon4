@@ -27,9 +27,8 @@ export class ContentComponent implements OnInit {
       }
     );
 
-    this.currentLink = this.urlService.currentUrl;
+    //this.currentLink = this.urlService.currentUrl; // nem biztos, hogy törölni kell!!!
     this.users = this.userService.getAll();
-    //console.log('this.userService.getOne(2)', this.userService.getOne(2));
   }
 
   onChangeActive(user: User){
