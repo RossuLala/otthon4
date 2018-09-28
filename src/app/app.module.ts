@@ -10,6 +10,7 @@ import { UserManagerComponent } from './content/user-manager/user-manager.compon
 import { UserService } from './user.service';
 import { UserEditorComponent } from './content/user-manager/user-editor/user-editor.component';
 import { UrlService } from './url.service';
+import { NewUserComponent } from './content/user-manager/new-user/new-user.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { UrlService } from './url.service';
     ContentComponent,
     UserManagerComponent,
     UserEditorComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
