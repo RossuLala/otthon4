@@ -12,9 +12,15 @@ export class LeftSidebarComponent implements OnInit {
   @Output('change') pageChange: EventEmitter<string> = new EventEmitter();  //@Output dekorator 'change' néven teszi elérhetővé
 
 
-  constructor(private UrlService: UrlService) { }
+  constructor(private urlService: UrlService) { }
 
   ngOnInit() {
+    this.urlService.urlChanged.subscribe(
+      (ev) => {
+        //console.log('ev', ev.url);
+        this.currentLink = ev.url;
+      }
+    )
   }
 
   onMenuClick($event:Event){
@@ -23,7 +29,7 @@ export class LeftSidebarComponent implements OnInit {
     this.currentLink = element.href.replace(location.origin,""); //CONSOLE-> location. beírásakor lászanak a választási lehetőségel
 
     //this.pageChange.emit(this.currentLink); //emit az esemény kiváltásáért felel
-    this.UrlService.jumpTo(this.currentLink);
+    this.urlService.jumpTo(this.currentLink);
 
     //console.log('left-sidebar.component---',this.currentLink);
   }
