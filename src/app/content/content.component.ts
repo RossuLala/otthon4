@@ -26,22 +26,6 @@ export class ContentComponent implements OnInit {
         this.currentLink = e.url;
       }
     );
-
-    //this.currentLink = this.urlService.currentUrl; // nem biztos, hogy törölni kell!!!
-    this.users = this.userService.getAll();
   }
 
-  onChangeActive(user: User){
-    this.userService.changeStatus(user);
-    //console.log('this.users', this.users);
-  }
-
-  onEditUser(user: User){
-    this.userService.lastEditedUser = user;
-    this.urlService.jumpTo('/user-manager',user )// átadjuk, hogy hová lépjen és az usert-is
-  }
-
-  deleteUser( user: User ){
-    this.userService.deleteUser(user);
-  }
 }

@@ -11,6 +11,7 @@ import { UserService } from './user.service';
 import { UserEditorComponent } from './content/user-manager/user-editor/user-editor.component';
 import { UrlService } from './url.service';
 import { NewUserComponent } from './content/user-manager/new-user/new-user.component';
+import { UserTableRowComponent } from './content/user-table-row/user-table-row.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NewUserComponent } from './content/user-manager/new-user/new-user.compo
     UserManagerComponent,
     UserEditorComponent,
     NewUserComponent,
+    UserTableRowComponent,
   ],
   imports: [
     BrowserModule,
