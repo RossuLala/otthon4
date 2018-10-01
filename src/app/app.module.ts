@@ -12,6 +12,7 @@ import { UserEditorComponent } from './content/user-manager/user-editor/user-edi
 import { UrlService } from './url.service';
 import { NewUserComponent } from './content/user-manager/new-user/new-user.component';
 import { UserTableRowComponent } from './content/user-table-row/user-table-row.component';
+import { ConfigService } from './config.service';
 
 
 @NgModule({
@@ -27,11 +28,12 @@ import { UserTableRowComponent } from './content/user-table-row/user-table-row.c
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [ // provire - elérhetővé tesszük minenhonnan (beteszi az importok közé)
     UserService, 
-    UrlService
+    UrlService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

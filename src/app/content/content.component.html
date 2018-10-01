@@ -6,33 +6,37 @@
 
         <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                <h4>Label</h4>
-                <span class="text-muted">{{currentLink}}</span>
+                <div class="dashboard-icon-div">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <h4>{{ userCount }}</h4>
+                <span class="text-muted">lakó</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
+                <div class="dashboard-icon-div">
+                    <span class="glyphicon glyphicon-bed"></span>
+                </div>
+                <h4>{{ roomsCount }}</h4>
+                <span class="text-muted">Szoba</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
+                <div class="dashboard-icon-div">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <h4>{{staffCount}}</h4>
+                <span class="text-muted">alkalmazott</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200"
-                    height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-                <h4>Label</h4>
-                <span class="text-muted">Something else</span>
+                <div class="dashboard-icon-div">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+                <h4>{{currentStaffCount}}</h4>
+                <span class="text-muted">szolgálatban</span>
             </div>
         </div>
 
         <div class="table-responsive">
-            <h2 class="sub-header">Section title</h2>
+            <h2 class="sub-header">Lakók listája</h2>
             <app-user-table-row></app-user-table-row>
         </div>
 

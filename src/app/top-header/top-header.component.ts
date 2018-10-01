@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {environment} from '../../environments/environment'; //IMPORT - használni szeretném a {} ban megatott komponest amit itt találok FROM
+import {environment} from '../../environments/environment'; 
+import { ConfigService } from '../config.service';
 
 
-@Component({ //komponens leírása
-  selector: 'app-top-header', //Így tudom HTML-ben meghívni ezt a componest:{{SELECTOR}}
-  templateUrl: './top-header.component.html', //itt találom a komponens HTLM fálját
-  styleUrls: ['./top-header.component.css'] //A stílusa itt található
+@Component({ 
+  selector: 'app-top-header', 
+  templateUrl: './top-header.component.html', 
+  styleUrls: ['./top-header.component.css'] 
 })
-export class TopHeaderComponent implements OnInit { // EXPORTÁLOK egy CLASS-t és egy IMPLEMENT-et
+export class TopHeaderComponent implements OnInit { 
   appTitle:string = "";
 
-  constructor() { //CONSTRUKTOR-ban adom meg, hogy mit mi csináljon a komponens
-    //console.log(environment.appTitle)
-    this.appTitle = environment.appTitle;
-  }
+  constructor(private config: ConfigService) {}
 
   ngOnInit() {
+    this.appTitle = this.config.get('appTitle');
   }
 
 }

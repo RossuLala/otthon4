@@ -4,7 +4,6 @@
 
 export const environment = { //EXPORT- eléthetővé teszek másik modulok számára a CONST változókat "envi.." néven
   production: false,
-  appTitle:"OTTHON4"
 };
 
 /*

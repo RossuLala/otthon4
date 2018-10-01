@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { User } from '../model/User';
 import { UserService } from '../user.service';
 import { UrlService } from '../url.service';
@@ -10,6 +10,13 @@ import { UrlService } from '../url.service';
 })
 export class ContentComponent implements OnInit {
   @Input('pageChange') PageChange: EventEmitter<any>;//any - Típus ellenőrzés kikapcsolása. Több dolog is átadható
+  @Output() userCount: Number = 0;
+  @Output() roomsCount: Number = 10;
+  @Output() staffCount: Number = 30;
+  @Output() currentStaffCount: Number = 10;
+
+
+  
   private currentLink: string = "/";
 
   users = [];
@@ -26,6 +33,9 @@ export class ContentComponent implements OnInit {
         this.currentLink = e.url;
       }
     );
+
+    this.currentLink = this.urlService.currentUrl;
+    this.userCount = this.userService.getAll().length
   }
 
 }
