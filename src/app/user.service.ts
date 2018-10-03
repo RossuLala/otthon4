@@ -13,28 +13,28 @@ export class UserService {
     lastEditedUser: User = null;
     usersGetted: boolean = false; //lekértük már a usereket?
 
-    constructor( private config: ConfigService, private http: Http ) {
+    constructor(private config: ConfigService, private http: Http) {
         this.getUsersFromHttp()
     }
 
     getUsersFromHttp() {
-        return new Promise ((resolve, reject) =>{            //Vár amíg vége nem hajtódik (rendbe, hibás)
-            if (this.usersGetted){                          //ha már lekértük a usereket
+        return new Promise((resolve, reject) => {            //Vár amíg vége nem hajtódik (rendbe, hibás)
+            if (this.usersGetted) {                          //ha már lekértük a usereket
                 return resolve(this.users)
             }
             this.http.get(this.config.get('usersApi'))      //A configból kérem le a HTTP helyét (request is jó a get helyett)
-            .subscribe(                                    //Felitatkozunk az eseményre
-                (response: Response) => {                 //Az eredményt itt kapom meg
-                    this.usersGetted = true;             //a lekértük-e már a usereket igenre állítjuk
-                    //console.log('A verzió: ', response.json());
-                    //console.log('B verzió: ', JSON.parse(response._body);
-                    this.users = this.jsonToUser(response.json())
-                    resolve(this.users); //rendben esetén ezt adom vissza
-                },
-                (error) => {                            //Hibát itt kapom meg
-                    reject(error);//hiba esetén ezt adom vissza
-                }
-            )
+                .subscribe(                                    //Felitatkozunk az eseményre
+                    (response: Response) => {                 //Az eredményt itt kapom meg
+                        this.usersGetted = true;             //a lekértük-e már a usereket igenre állítjuk
+                        //console.log('A verzió: ', response.json());
+                        //console.log('B verzió: ', JSON.parse(response._body);
+                        this.users = this.jsonToUser(response.json())
+                        resolve(this.users); //rendben esetén ezt adom vissza
+                    },
+                    (error) => {                            //Hibát itt kapom meg
+                        reject(error);//hiba esetén ezt adom vissza
+                    }
+                )
         });
     }
 
