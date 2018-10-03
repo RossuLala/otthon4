@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "lastName": "aaa1",
+        "firstName": "bbb1",
+        "email": "ccc1",
+        "phone": "ddd1",
+        "relatives" : "eee1",
+        "active" : true
+    },
+    {
+        "id": 2,
+        "lastName": "aaa2",
+        "firstName": "bbb2",
+        "email": "ccc2",
+        "phone": "ddd2",
+        "relatives" : "eee2",
+        "active" : true
+    },
+    {
+        "id": 3,
+        "lastName": "aaa3",
+        "firstName": "bbb3",
+        "email": "ccc3",
+        "phone": "ddd3",
+        "relatives" : "eee3",
+        "active" : true
+    },
+    {
+        "id": 4,
+        "lastName": "Rossu",
+        "firstName": "László",
+        "email": "lala@intralog.hu",
+        "phone": "30-99-67-670",
+        "relatives" : "Wintou",
+        "active" : true
+    }
+]

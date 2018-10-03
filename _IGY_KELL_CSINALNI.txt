@@ -111,3 +111,24 @@ ngOnInit() {
   this.users = this.userService.getAll();
 }
 -- Figyeljük az eseményt
+
+
+Könytár elérhetővé tétele:
+--------------------------
+package.json :
+-- be kell állítani a könytárat:
+"assets": [
+              "src/favicon.ico",
+              "asc/api",
+              "src/assets"
+            ],
+
+            
+HTTP modul használatához kell!!!:
+---------------------------------
+app.module.ts:
+-- be kell importálni a HTTP modult a fordításhoz
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule

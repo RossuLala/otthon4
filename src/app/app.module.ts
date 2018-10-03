@@ -13,6 +13,7 @@ import { UrlService } from './url.service';
 import { NewUserComponent } from './content/user-manager/new-user/new-user.component';
 import { UserTableRowComponent } from './content/user-table-row/user-table-row.component';
 import { ConfigService } from './config.service';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -26,11 +27,12 @@ import { ConfigService } from './config.service';
     NewUserComponent,
     UserTableRowComponent,
   ],
-  imports: [
+  imports: [  //ide kell rakni a más aáltal készített modulokat
     BrowserModule,
     FormsModule,
+    HttpModule
   ],
-  providers: [ // provire - elérhetővé tesszük minenhonnan (beteszi az importok közé)
+  providers: [ //saját modulokat ide tesszük
     UserService, 
     UrlService,
     ConfigService
