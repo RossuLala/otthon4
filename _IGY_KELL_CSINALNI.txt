@@ -115,7 +115,7 @@ ngOnInit() {
 
 Könytár elérhetővé tétele:
 --------------------------
-package.json :
+[package.json]
 -- be kell állítani a könytárat:
 "assets": [
               "src/favicon.ico",
@@ -126,9 +126,68 @@ package.json :
             
 HTTP modul használatához kell!!!:
 ---------------------------------
-app.module.ts:
+[app.module.ts]
 -- be kell importálni a HTTP modult a fordításhoz
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
+
+
+OBSERVABLES eseménykezelés NEXT-SUBSCRIBE:
+------------------------------------------
+https://angular-2-training-book.rangle.io/handout/observables/using_observables.html
+
+[user.service.ts]
+import { Observable, Subject } from 'rxjs';                                         //Beimportájuk a Subjektet
+..
+@Injectable()
+export class UserService {
+    ..
+    userOserver: Subject<any> = new Subject();                                      // létrehozunk egy Subjektet amit figyelni tudunk
+..
+getUserWidthObserver() {
+        this.http.get(this.config.get('usersApi')).subscribe( 
+                (response: Response) => {              
+                    //console.log('user.sevice - Response', response.json());         
+                    this.users = this.jsonToUser(response.json())
+                    this.userOserver.next(this.users);                              //next hatására lefut a subscribe
+                },
+                (error) => {                           
+                    this.userOserver.error("Hiba az observerben");
+                }
+            );
+        );
+    }
+
+[contetnt.component.ts]
+this.userService.userOserver.subscribe(                                            //next hatására lefut a subscribe
+        (users) =>{
+          //console.log('content - users', users);
+          this.usersCount = users.length;
+        }
+      )
+
+OBSERVABLES - OnDestroy - leiratkozás, hogy ne mejen tele a memória:
+--------------------------------------------------------------------
+[user-table...js]
+import { OnDestroy } from '@angular/core';
+..
+userSubscribe = null;  //letárolom, hogy miról kell leiratkozni a ngOnDestroy()-al
+..
+ngOnInit() {
+        this.users = this.userService.users;
+        this.userSubscribe = this.userService.userOserver.subscribe( //letárolom, hogy miről kell leiratkozni
+            (users) => {
+                this.users = users;
+            },
+            (err) => {
+                this.users = [];
+            }
+        )
+    }
+
+ngOnDestroy(): void {
+   this.userSubscribe.unsubscribe()   //leiratkozok az esemnyről, hogy ne menjen lete e memória
+}
+

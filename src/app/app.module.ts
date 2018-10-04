@@ -15,7 +15,6 @@ import { UserTableRowComponent } from './content/user-table-row/user-table-row.c
 import { ConfigService } from './config.service';
 import { HttpModule } from '@angular/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
