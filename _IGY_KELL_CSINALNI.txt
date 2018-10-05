@@ -191,3 +191,8 @@ ngOnDestroy(): void {
    this.userSubscribe.unsubscribe()   //leiratkozok az esemnyről, hogy ne menjen lete e memória
 }
 
+
+SZEVER INDÍTÁSA:
+----------------
+node szerver
+
