@@ -45,7 +45,6 @@ export class UserService {
                 this.userOserver.error("Hiba az observerben");//hiba esetén ezt adom vissza
             }
         );
-        );
     }
 
     //cRud - READ - egy felhasználó  

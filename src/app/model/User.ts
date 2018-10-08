@@ -33,6 +33,4 @@ export class User {  //Az osztály létrehozásával a tervrajz más modulokban 
             //console.log(k,'-', this[k]);
             }
         }
-    }
-
 }

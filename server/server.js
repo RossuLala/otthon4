@@ -1,7 +1,6 @@
-//betöltöm a szükséges modulokat:
-var fs = require("fs"),                   //fájlrendszer kezelő                                
-    http = require("http"),              // HTTP kezelő
-    port = 3333;                        //megadom, hogy melyik porton fusson
+var fs = require("fs"),
+    http = require("http"),
+    port = 3333;
 
 // Adatok írása a JSON fájlba.
 function writeJson(fileName, data) {
@@ -21,7 +20,6 @@ function processUrl(url) {
 // Get kérések kezelése.
 function handleGetRequest(request, result) {
     if (request.url.indexOf("favicon") > -1) {
-        // ha véletlenül a favicont akarja letölteni, akkor ne akadjon ki
         return result.end("Hello");
     }
 
@@ -178,21 +176,21 @@ http.createServer(function (request, result) {
 
     // Különböző típusú kérések lekezelése.
     switch (request.method.toLowerCase()) {
-        case "get":
-            handleGetRequest(request, result);
-            break;
-        case "put":
-            handlePutRequest(request, result);
-            break;
-        case "post":
-            handlePostRequest(request, result);
-            break;
-        case "delete":
-            handleDeleteRequest(request, result);
-            break;
-        default:
-            writeResult(result, "A metódus: " + request.method);
-            break;
+    case "get":
+        handleGetRequest(request, result);
+        break;
+    case "put":
+        handlePutRequest(request, result);
+        break;
+    case "post":
+        handlePostRequest(request, result);
+        break;
+    case "delete":
+        handleDeleteRequest(request, result);
+        break;
+    default:
+        writeResult(result, "A metódus: " + request.method);
+        break;
     }
 
 }).listen(port);
