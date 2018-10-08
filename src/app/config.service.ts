@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
   data: Object = {
     appTitle:"OTTHON4",
-    api: 'api',                   //HTTP vel innen tudom letölteni a usereket
-    usersApi: 'api/users.json'
+    //api: 'api',                   //töröltem mert nem kell
+    usersApi: 'http://localhost:3333'
 
   }
 

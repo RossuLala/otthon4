@@ -196,3 +196,9 @@ SZEVER INDÍTÁSA:
 ----------------
 node szerver
 
+CRUD:
+-----
+Create Read Update Delete
+
+
+

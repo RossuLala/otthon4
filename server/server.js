@@ -21,6 +21,7 @@ function processUrl(url) {
 // Get kérések kezelése.
 function handleGetRequest(request, result) {
     if (request.url.indexOf("favicon") > -1) {
+        // ha véletlenül a favicont akarja letölteni, akkor ne akadjon ki
         return result.end("Hello");
     }
 

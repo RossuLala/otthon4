@@ -11,25 +11,90 @@ export class UserService {
     lastEditedUser: User = null;
     usersGetted: boolean = false; //lekértük már a usereket?
     userOserver: Subject<any> = new Subject();             // létrehozunk egy Subjektet amit figyelni tudunk
+    userUrl: string;
 
     constructor(private config: ConfigService, private http: Http) { //induláskor lefut ami a konstruktorban van
+        this.userUrl = this.config.get('usersApi') + "/user";      //innen kell letölteni az adatokat
         this.getUserWidthObserver();
     }
 
+    //Crud - CREATE
+    pushOne(user: User) {
+        return new Promise((resolve, reject) => {
+            this.http.put(`${this.userUrl}`, JSON.stringify(user))
+                .subscribe(
+                    (response: Response) => {
+                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
+                        resolve('Új adatfeltöltés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
+                    },
+                    (err) => {
+                        reject(err);
+                    });
+        });
+    }
+
+    //cRud - READ - összes
     getUserWidthObserver() {
-        this.http.get(this.config.get('usersApi')).subscribe(  //Felitatkozunk az eseményre
-                (response: Response) => {                     //Az eredményt itt kapom meg
-                    //console.log('user.sevice - Response', response.json());         
-                    this.users = this.jsonToUser(response.json())
-                    this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
-                },
-                (error) => {                            //Hibát itt kapom meg
-                    this.userOserver.error("Hiba az observerben");//hiba esetén ezt adom vissza
-                }
-            );
+        this.http.get(this.userUrl + "/all").subscribe(  //Felitatkozunk az eseményre
+            (response: Response) => {                     //Az eredményt itt kapom meg
+                //console.log('user.sevice - Response', response.json());         
+                this.users = this.jsonToUser(response.json())
+                this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
+            },
+            (error) => {                            //Hibát itt kapom meg
+                this.userOserver.error("Hiba az observerben");//hiba esetén ezt adom vissza
+            }
+        );
         );
     }
 
+    //cRud - READ - egy felhasználó  
+    getOne(id: Number) {
+        return new Promise((resolve, reject) => {
+            //get('${this.userUrl}/${id}')  ----- Ez kell:` e helyett:' (template string - AltGr+7 )
+            this.http.get(`${this.userUrl}/${id}`)
+                .subscribe(
+                    (response: Response) => {
+                        let user: User = new User();
+                        user.formObject(response.json());
+                        resolve(user);
+                    },
+                    (err) => {
+                        reject(err);
+                    });
+        });
+    }
+
+
+    //crUd - UPDATE
+    editUser(user: User) {
+        return new Promise((resolve, reject) => {
+            this.http.post(`${this.userUrl}/${user.id}`, JSON.stringify(user))
+                .subscribe(
+                    (response: Response) => {
+                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
+                        resolve('Adatfeltöltés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
+                    },
+                    (err) => {
+                        reject(err);
+                    });
+        });
+    }
+
+    //cruD - DELETE
+    deleteUser(user: User) {
+        return new Promise((resolve, reject) => {
+            this.http.delete(`${this.userUrl}/${user.id}`)
+                .forEach(                                     //subscribe is jó lenne, de megtelhet a memória
+                    (response: Response) => {
+                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
+                        resolve('Törlés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
+                    }
+                );
+        });
+    }
+
+    
     jsonToUser(userArray): User[] {             //végig megy a json-ból beolvasott tömbön és beolvassa a userekbe
         let users: Array<User> = [];
         for (let user of userArray) {
@@ -38,43 +103,6 @@ export class UserService {
             users.push(newUser);
         }
         return users;
-    }
-
-
-    getUsersFromHttp() {
-        return new Promise((resolve, reject) => {            //Vár amíg vége nem hajtódik (rendbe, hibás)
-            if (this.usersGetted) {                          //ha már lekértük a usereket
-                return resolve(this.users)
-            }
-            this.http.get(this.config.get('usersApi'))      //A configból kérem le a HTTP helyét (request is jó a get helyett)
-                .subscribe(                                    //Felitatkozunk az eseményre
-                    (response: Response) => {                 //Az eredményt itt kapom meg
-                        this.usersGetted = true;             //a lekértük-e már a usereket igenre állítjuk
-                        //console.log('A verzió: ', response.json());
-                        //console.log('B verzió: ', JSON.parse(response._body);
-                        this.users = this.jsonToUser(response.json())
-                        resolve(this.users); //rendben esetén ezt adom vissza
-                    },
-                    (error) => {                            //Hibát itt kapom meg
-                        reject(error);//hiba esetén ezt adom vissza
-                    }
-                );
-        });
-    }
-
-
-
-    getAll(): Promise<any> { // Promise vár userek visszadására
-        return this.getUsersFromHttp();
-    }
-
-    getOne(id: Number) {
-        //visszadja az adot id-jű usert
-        let index = this.getUserIndex(id)
-        if (index == null) {
-            return index;
-        }
-        return this.users[index];
     }
 
     getTopID() {
@@ -92,12 +120,6 @@ export class UserService {
         return this.lastEditedUser
     }
 
-    pushOne(user: User) {
-        user.id = this.getTopID() + 1;
-        this.users.push(user);
-        this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
-        //console.log(this.users);
-    }
 
     changeStatus(user: User) {
         let index = this.getUserIndex(user.id);
@@ -118,18 +140,4 @@ export class UserService {
         return index;
     }
 
-    editUser(user: User) {                       //megkapjuk a módosított user értékeket
-        let index = this.getUserIndex(user.id); //megkeressük a tömbben a sort ID alapján
-        if (index !== null) {
-            for (let k in user) {                //vég megyünk a user minden elemén
-                this.users[index][k] = user[k] //beírjuk az új értékeket
-            }
-        }
-    }
-
-    deleteUser(user: User) {
-        let index = this.getUserIndex(user.id);
-        this.users.splice(index, 1); //a tömb valahanyadik elemétől töröl valahány elemet
-        this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
-    }
 }

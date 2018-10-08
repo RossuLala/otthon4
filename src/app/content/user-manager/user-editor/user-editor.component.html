@@ -4,32 +4,32 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Vezetéknév</label>
                 <input type="text" class="form-control" name="lastName" placeholder="Vezetéknév beírása" required
-                    [(ngModel)]="user.lastName">
+                    [(ngModel)]="editedUser.lastName">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Keresztnév</label>
                 <input type="text" class="form-control" name="firstName" placeholder="Keresztnév beírása" required   
-                    [(ngModel)]="user.firstName">
+                    [(ngModel)]="editedUser.firstName">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">E-Mail</label>
                 <input type="email" class="form-control" name="email" placeholder="E-Mail beírása" 
                     pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required 
-                    [(ngModel)]="user.email">
+                    [(ngModel)]="editedUser.email">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Telefon</label>
                 <input type="text" class="form-control" name="phone" placeholder="Telefon beírása" required 
-                [(ngModel)]="user.phone">
+                [(ngModel)]="editedUser.phone">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Kapcsolattartó</label>
                 <input type="text" class="form-control" name="relatives" placeholder="Kapcsolattartó beírása" required
-                [(ngModel)]="user.relatives">
+                [(ngModel)]="editedUser.relatives">
             </div>
 
             <button type="submit" class="btn btn-primary">Módosítás</button>
