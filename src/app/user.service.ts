@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { User } from './model/User';
 import { ConfigService } from './config.service';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class UserService {
@@ -13,7 +14,11 @@ export class UserService {
     userOserver: Subject<any> = new Subject();             // létrehozunk egy Subjektet amit figyelni tudunk
     userUrl: string;
 
-    constructor(private config: ConfigService, private http: Http) { //induláskor lefut ami a konstruktorban van
+    constructor(
+        private config: ConfigService,
+        private http: Http,
+        private httpService: HttpService) {
+
         this.userUrl = this.config.get('usersApi') + "/user";      //innen kell letölteni az adatokat
         this.getUserWidthObserver();
     }
@@ -21,15 +26,11 @@ export class UserService {
     //Crud - CREATE
     pushOne(user: User) {
         return new Promise((resolve, reject) => {
-            this.http.put(`${this.userUrl}`, JSON.stringify(user))
-                .subscribe(
-                    (response: Response) => {
-                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
-                        resolve('Új adatfeltöltés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
-                    },
-                    (err) => {
-                        reject(err);
-                    });
+            this.httpService.create(`${this.userUrl}`, user)
+                .then((res) => {
+                    this.getUserWidthObserver();
+                    resolve('Új adatfeltöltés rendben!!!');
+                });
         });
     }
 
@@ -93,7 +94,7 @@ export class UserService {
         });
     }
 
-    
+
     jsonToUser(userArray): User[] {             //végig megy a json-ból beolvasott tömbön és beolvassa a userekbe
         let users: Array<User> = [];
         for (let user of userArray) {
