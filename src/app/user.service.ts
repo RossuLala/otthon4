@@ -19,14 +19,14 @@ export class UserService {
         private http: Http,
         private httpService: HttpService) {
 
-        this.userUrl = this.config.get('usersApi') + "/user";      //innen kell letölteni az adatokat
+        this.userUrl = this.config.get('usersApi') + "/user";      //innen kell letölteni az adatokat 
         this.getUserWidthObserver();
     }
 
     //Crud - CREATE
     pushOne(user: User) {
         return new Promise((resolve, reject) => {
-            this.httpService.create(`${this.userUrl}`, user)
+            this.httpService.create("user", user)
                 .then((res) => {
                     this.getUserWidthObserver();
                     resolve('Új adatfeltöltés rendben!!!');
@@ -84,13 +84,11 @@ export class UserService {
     //cruD - DELETE
     deleteUser(user: User) {
         return new Promise((resolve, reject) => {
-            this.http.delete(`${this.userUrl}/${user.id}`)
-                .forEach(                                     //subscribe is jó lenne, de megtelhet a memória
-                    (response: Response) => {
-                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
-                        resolve('Törlés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
-                    }
-                );
+            this.httpService.delete("user", user)
+                .then((res) => {
+                    this.getUserWidthObserver();
+                    resolve('A törlés rendben!!!');
+                });
         });
     }
 
