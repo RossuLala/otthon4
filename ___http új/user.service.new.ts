@@ -11,7 +11,7 @@ export class UserService {
     users: Array<User> = [];
     lastEditedUser: User = null;
     usersGetted: boolean = false; //lekértük már a usereket?
-    userOserver: Subject<any> = new Subject();             // létrehozunk egy Subjektet amit figyelni tudunk
+    userObserver: Subject<any> = new Subject();             // létrehozunk egy Subjektet amit figyelni tudunk
     userUrl: string;
 
     constructor(
@@ -77,10 +77,10 @@ export class UserService {
         this.httpService.readAll("user")
             .then((users) => {  
                     console.log('users------------------', users);               
-                    this.userOserver.next(users);         
+                    this.userObserver.next(users);         
                 },
                 (error) => {                            
-                    this.userOserver.error("Hiba az observerben");
+                    this.userObserver.error("Hiba az observerben");
                 }
             );
     }
@@ -91,10 +91,10 @@ export class UserService {
             (response: Response) => {                     //Az eredményt itt kapom meg
                 //console.log('user.sevice - Response', response.json());         
                 this.users = this.jsonToUser(response.json())
-                this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
+                this.userObserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
             },
             (error) => {                            //Hibát itt kapom meg
-                this.userOserver.error("Hiba az observerben");//hiba esetén ezt adom vissza
+                this.userObserver.error("Hiba az observerben");//hiba esetén ezt adom vissza
             }
         );
     }
@@ -130,7 +130,7 @@ export class UserService {
         let index = this.getUserIndex(user.id);
         if (index !== null) {
             this.users[index].active = !this.users[index].active //legyen az ellenkezője
-            this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
+            this.userObserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
         }
     }
 
@@ -140,7 +140,7 @@ export class UserService {
             if (this.users[i].id == id) {
                 index = i;
             }
-            this.userOserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
+            this.userObserver.next(this.users);              //meghívjuk a subsscribe végrehajtását
         }
         return index;
     }

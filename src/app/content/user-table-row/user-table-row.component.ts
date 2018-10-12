@@ -18,7 +18,7 @@ export class UserTableRowComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.users = this.userService.users;
-        this.userSubscribe = this.userService.userOserver.subscribe( //letárolom, hogy miről kell leiratkozni
+        this.userSubscribe = this.userService.userObserver.subscribe( //letárolom, hogy miről kell leiratkozni
             (users) => {
                 this.users = users;
             },

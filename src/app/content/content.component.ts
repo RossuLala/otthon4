@@ -35,7 +35,7 @@ export class ContentComponent implements OnInit {
     );
 
     this.currentLink = this.urlService.currentUrl;
-    this.userService.userOserver.subscribe(           //feliratkozunk az eseményre ha változás van, akkor ismét beolvassuk
+    this.userService.userObserver.subscribe(           //feliratkozunk az eseményre ha változás van, akkor ismét beolvassuk
         (users) =>{
           //console.log('content - users', users);
           this.usersCount = users.length;

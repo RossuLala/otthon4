@@ -34,7 +34,19 @@ export class HttpService {
         });
     }
 
-    read() {
+    read(database: string, id: any) {
+        return new Promise((resolve, reject) => {
+            let serverRequest = `${this.serverUrl}${database}/${id}`
+            this.http.get(serverRequest )
+                .subscribe((response: Response) => {
+                    let user: User = new User();
+                    user.formObject(response.json());
+                    resolve(user);
+                    },
+                    (err) => {
+                        reject(err);
+                    });
+        });
     }
 
     update() {
