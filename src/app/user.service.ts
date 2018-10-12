@@ -59,36 +59,17 @@ export class UserService {
     }
 
 
-    getOne_r(id: Number) {
-        return new Promise((resolve, reject) => {
-            this.http.get(`${this.userUrl}/${id}`)
-                .subscribe(
-                    (response: Response) => {
-                        let user: User = new User();
-                        user.formObject(response.json());
-                        resolve(user);
-                    },
-                    (err) => {
-                        reject(err);
-                    });
-        });
-    }
-
-
     //crUd - UPDATE
     editUser(user: User) {
         return new Promise((resolve, reject) => {
-            this.http.post(`${this.userUrl}/${user.id}`, JSON.stringify(user))
-                .subscribe(
-                    (response: Response) => {
-                        this.getUserWidthObserver();         // szól hogy frissültek az adatok
-                        resolve('Adatfeltöltés rendben!!!');//üzenet a submitForm-nak a sikeres feltöltésről
-                    },
-                    (err) => {
-                        reject(err);
-                    });
+            this.httpService.update("user", user)
+                .then((response: Response) => {
+                    this.getUserWidthObserver();
+                    resolve('Adatfelvitel rendben!!!');
+                });
         });
     }
+
 
     //cruD - DELETE
     deleteUser(user: User) {

@@ -49,9 +49,22 @@ export class HttpService {
         });
     }
 
-    update() {
-
+    update(database: string, user: User){
+        return new Promise((resolve, reject) => {
+            let serverRequest = `${this.serverUrl}${database}/${user.id}`
+                this.http.post(serverRequest,JSON.stringify(user))
+                .forEach(
+                    (response: Response) => {
+                        resolve(response);
+                    }
+                )
+        });
     }
+
+
+
+
+
 
     delete(database: string, user: User) {
         return new Promise((resolve, reject) => {
