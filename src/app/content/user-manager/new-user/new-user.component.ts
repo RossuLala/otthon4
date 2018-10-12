@@ -15,7 +15,7 @@ export class NewUserComponent implements OnInit {
     }
 
     submitForm(form) {
-        console.log('submitForm:', form);
+        //console.log('submitForm:', form);
         if (!form.valid) {
             return false;
         }
@@ -25,7 +25,7 @@ export class NewUserComponent implements OnInit {
         this.userService.pushOne(user)
             .then(
                 (message: string) => {
-                    console.log(message);// üzenet az editUser-től
+                    //console.log(message);// üzenet az editUser-től
                 }
             );
     }
