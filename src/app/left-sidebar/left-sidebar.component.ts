@@ -29,7 +29,7 @@ export class LeftSidebarComponent implements OnInit {
     this.currentLink = element.href.replace(location.origin,""); //CONSOLE-> location. beírásakor lászanak a választási lehetőségel
 
     //this.pageChange.emit(this.currentLink); //emit az esemény kiváltásáért felel
-    this.urlService.jumpTo(this.currentLink);
+    //this.urlService.jumpTo(this.currentLink);
 
     //console.log('left-sidebar.component---',this.currentLink);
   }

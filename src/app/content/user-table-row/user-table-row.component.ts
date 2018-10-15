@@ -39,7 +39,7 @@ export class UserTableRowComponent implements OnInit, OnDestroy {
 
     onEditUser(user: User) {
         this.userService.lastEditedUser = user;
-        this.urlService.jumpTo('/user-manager', user)// átadjuk, hogy hová lépjen és az usert-is
+        //this.urlService.jumpTo('/user-manager', user)// átadjuk, hogy hová lépjen és az usert-is
     }
 
     deleteUser(user: User) {
