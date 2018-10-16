@@ -7,8 +7,8 @@ import { ConfigService } from './config.service';
 export class HttpService {
 
     constructor(
-        private http: Http,
-        private config: ConfigService) { }
+        protected http: Http,    //A PROTECTED elérhetővé teszi kívűlről ezeket a változókat
+        protected config: ConfigService) { }
 
     baseRequest(url, type, data?) {
         return new Promise((resolve, reject) => {

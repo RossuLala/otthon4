@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Room} from '../model/Room';
+import { HttpRoomService } from '../http-room.service';
 
 @Component({
   selector: 'app-rooms',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
-
-  constructor() { }
+  rooms: Array<Room> = [];
+  constructor(
+    private service: HttpRoomService 
+  ) { }
 
   ngOnInit() {
+    this.service.getAll();
   }
 
 }

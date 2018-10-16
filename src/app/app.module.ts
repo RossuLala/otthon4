@@ -21,6 +21,7 @@ import { UserService } from './user.service';
 import { UrlService } from './url.service';
 import { ConfigService } from './config.service';
 import { HttpService } from './http.service';
+import { HttpRoomService } from './http-room.service';
 
 
 const routerSetting: Routes = [
@@ -45,17 +46,18 @@ const routerSetting: Routes = [
         RoomsComponent,
         SupplyComponent,
     ],
-    imports: [  //ide kell rakni a más által készített modulokat
+    imports: [  
         BrowserModule,
         FormsModule,
         HttpModule,
         RouterModule.forRoot(routerSetting)
     ],
-    providers: [ //saját modulokat ide tesszük
+    providers: [ 
         UserService,
         UrlService,
         ConfigService,
-        HttpService
+        HttpService,
+        HttpRoomService
     ],
     bootstrap: [AppComponent]
 })
