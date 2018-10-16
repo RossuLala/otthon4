@@ -3,41 +3,57 @@ import { Http, Response } from '@angular/http';
 import { ConfigService } from './config.service';
 
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class HttpService {
 
     constructor(
         private http: Http,
         private config: ConfigService) { }
 
-    create(url: string, data: any) {
+    baseRequest(url, type, data?) {
         return new Promise((resolve, reject) => {
-            try {
-                data = JSON.stringify(data)
-            } catch (err) {
-                reject("Hibás objeltum")
+            if (data) {
+                try {
+                    data = JSON.stringify(data)
+                } catch (err) {
+                    reject("Hibás objeltum")
+                }
+            } else {
+                data = {};
             }
-            this.http.put(url, data)
+
+            if (['put', 'post'].indexOf(type)> -1){
+                this.http[type](url, data)//A kulcsot változóként is meg tudom adni.
                 .forEach(
                     (response: Response) => {
                         resolve(response);
                     }
                 )
+            }else{
+                this.http[type](url)
+                .forEach(
+                    (response: Response) => {
+                        resolve(response);
+                    }
+                )
+            }
+
         });
-
-
     }
 
-    read() {
+    create(url: string, data: any) {
+        return this.baseRequest(url, 'put',data)
     }
 
-    update(){
-
+    read(url: string) {
+        return this.baseRequest(url, 'get')
     }
 
-    delete(){
-        
+    update(url: string, data: any) {
+        return this.baseRequest(url, 'post',data)
+    }
+
+    delete(url: string ) {
+        return this.baseRequest(url, 'delete')
     }
 }
