@@ -202,3 +202,45 @@ Create Read Update Delete
 
 
 
+ROOTER - MENÜKEZELÉSHEZ
+-----------------------
+[app.module.ts]
+..
+import { RouterModule, Routes } from '@angular/router';
+..
+const routerSetting: Routes = [
+    { path: '', component: ContentComponent },
+    { path: 'user-manager', component: UserManagerComponent },
+    { path: 'rooms', component: RoomsComponent },
+    { path: 'supply', component: SupplyComponent },
+    { path: '**', component: PageNotFoundComponent },//hiba oldal 404hiba.
+]
+..
+    imports: [ 
+        ..
+        RouterModule.forRoot(routerSetting)
+
+---------
+[letf-sidebar.componet,html]
+      <ul class="nav nav-sidebar">
+        <li>
+          <a [routerLink]="['/']">Összefoglaló</a>
+        </li>
+        <li>
+          <a [routerLink]="['/user-manager']">Új lakó</a>
+        </li>
+        <li>
+          <a [routerLink]="['/rooms']">Szobák</a>
+        </li>
+        <li>
+          <a [routerLink]="['/supply']">Beszerzés</a>
+        </li>
+      </ul>
+
+------
+[index.html]
+A router linkeket ehez képrst kell megadni
+..
+<base href="/"> 
+
+
