@@ -1,38 +1,41 @@
-<div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-        <form (ngSubmit)="submitForm()" novalidate>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Vezetéknév</label>
-                <input type="text" class="form-control" name="lastName" placeholder="Vezetéknév beírása" required
-                    [(ngModel)]="editedUser.lastName">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Keresztnév</label>
-                <input type="text" class="form-control" name="firstName" placeholder="Keresztnév beírása" required   
-                    [(ngModel)]="editedUser.firstName">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">E-Mail</label>
-                <input type="email" class="form-control" name="email" placeholder="E-Mail beírása" 
-                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required 
-                    [(ngModel)]="editedUser.email">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Telefon</label>
-                <input type="text" class="form-control" name="phone" placeholder="Telefon beírása" required 
-                [(ngModel)]="editedUser.phone">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Kapcsolattartó</label>
-                <input type="text" class="form-control" name="relatives" placeholder="Kapcsolattartó beírása" required
-                [(ngModel)]="editedUser.relatives">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Módosítás</button>
-        </form>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <form (ngSubmit)="submitForm()" novalidate>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Vezetéknév</label>
+                    <input type="text" class="form-control" name="lastName" placeholder="Vezetéknév beírása" required
+                        [(ngModel)]="editedUser.lastName">
+                </div>
+    
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Keresztnév</label>
+                    <input type="text" class="form-control" name="firstName" placeholder="Keresztnév beírása" required   
+                        [(ngModel)]="editedUser.firstName">
+                </div>
+    
+                <div class="form-group">
+                    <label for="exampleInputEmail1">E-Mail</label>
+                    <input type="email" class="form-control" name="email" placeholder="E-Mail beírása" 
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required 
+                        [(ngModel)]="editedUser.email">
+                </div>
+    
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Telefon</label>
+                    <input type="text" class="form-control" name="phone" placeholder="Telefon beírása" required 
+                    [(ngModel)]="editedUser.phone">
+                </div>
+    
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kapcsolattartó</label>
+                    <input type="text" class="form-control" name="relatives" placeholder="Kapcsolattartó beírása" required
+                    [(ngModel)]="editedUser.relatives">
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Módosítás</button>
+            </form>
+        </div>
     </div>
+    
 </div>

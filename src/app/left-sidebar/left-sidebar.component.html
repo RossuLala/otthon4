@@ -1,17 +1,17 @@
 
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li [ngClass]="{'active' : currentLink == '/'}">
-          <a (click)="onMenuClick($event)" href="/">Összefoglaló</a>
+        <li>
+          <a [routerLink]="['/']">Összefoglaló</a>
         </li>
-        <li [ngClass]="{'active' : currentLink == '/user-manager'}">
-          <a (click)="onMenuClick($event)" href="/user-manager">Lakó kezelés</a>
+        <li>
+          <a [routerLink]="['/user-manager']">Új lakó</a>
         </li>
-        <li [ngClass]="{'active' : currentLink == '/analytics'}">
-          <a (click)="onMenuClick($event)" href="/analytics">Analytics</a>
+        <li>
+          <a [routerLink]="['/rooms']">Szobák</a>
         </li>
-        <li [ngClass]="{'active' : currentLink == '/export'}">
-          <a (click)="onMenuClick($event)" href="/export">Export</a>
+        <li>
+          <a [routerLink]="['/supply']">Beszerzés</a>
         </li>
       </ul>
 
