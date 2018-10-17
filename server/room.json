@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "id": 1,
+        "name": "kék szoba",
+        "size": 0,
+        "slot": 0,
+        "floor": 0,
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "kék szoba",
+        "size": "1",
+        "slot": "1",
+        "floor": "1",
+        "active": true
+    },
+    {
+        "id": 3,
+        "name": "x",
+        "size": "1",
+        "slot": "1",
+        "floor": "1",
+        "active": true
+    }
+]
