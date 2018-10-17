@@ -3,10 +3,12 @@ import { HttpService } from './http.service';
 import { Http, Response } from '@angular/http';
 import { ConfigService } from './config.service';
 import { Room } from './model/Room';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class HttpRoomService extends HttpService {// Örökítjük a HttpService-ből
     private baseUrl: string;
+    public rooms: Array<Room> = []; //A szobák tombjét elérhetővé teszem
 
     constructor(
         http: Http,
@@ -14,14 +16,17 @@ export class HttpRoomService extends HttpService {// Örökítjük a HttpService
         //A supet függvény importálja ezeket az osztályokat a supet függvénnyel. 
         super(http, config);
         this.baseUrl = this.config.get('usersApi');
+        this.getAll();
     }
+    //1.Létrehozok egy Subjectet, amit figyelni tudunk:
+    public roomSubject: Subject<any> = new Subject();
 
     getAll() {
         this.read(`${this.baseUrl}/room/all`)
         .then(
             (response: Response) => {
-            console.log('response', response.json());
-     
+                this.rooms = response.json();
+                this.roomSubject.next(this.rooms);     
             }
         );
     }
@@ -31,6 +36,7 @@ export class HttpRoomService extends HttpService {// Örökítjük a HttpService
     }
 
     updateRoom(room:Room){
+        
         return this.update(`${this.baseUrl}/room/${room.id}`, room);
     }
 
