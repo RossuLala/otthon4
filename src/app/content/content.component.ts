@@ -17,7 +17,7 @@ export class ContentComponent implements OnInit {
 
 
   
-  private currentLink: string = "/";
+  public currentLink: string = "/";
 
   users = [];
 

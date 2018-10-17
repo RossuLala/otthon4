@@ -21,7 +21,7 @@ export class UserEditorComponent implements OnInit {
             })
     }
 
-    submitForm(form) {
+    submitForm() {
         //console.log('submitForm-user:', this.editedUser);
         this.userService.editUser(this.editedUser)
             .then(

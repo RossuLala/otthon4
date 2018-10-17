@@ -244,3 +244,16 @@ A router linkeket ehez képrst kell megadni
 <base href="/"> 
 
 
+BUILD - VÉGLEDES verzió
+-----------------------
+[terminal]
+ng build --prod
+
+[DIST KONYVTÁR]- létrejön!!!!
+
+[index.html]
+A router linkeket ehez képrst kell megadni
+..
+<base href="/"> 
+
+
